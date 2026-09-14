@@ -123,10 +123,10 @@ export default function AboutPage({ navigate }: Props) {
             </p>
 
             {/* Story image */}
-            <div className="img-card rounded-2xl h-52 overflow-hidden">
+            <div className="img-card relative rounded-2xl h-52 overflow-hidden">
               <img src={IMG.building} alt="Nairobi" className="img-cover" />
               <div className="absolute inset-0 img-overlay-bottom" />
-              <div className="absolute bottom-4 left-4 font-mono-tech text-xs" style={{ color: "var(--accent)", fontSize: "0.65rem" }}>NAIROBI, KENYA — EAST AFRICA HQ</div>
+              <div className="absolute bottom-4 left-4 font-mono-tech text-xs pointer-events-none" style={{ color: "var(--accent)", fontSize: "0.65rem" }}>NAIROBI, KENYA — EAST AFRICA HQ</div>
             </div>
           </div>
 
@@ -135,10 +135,10 @@ export default function AboutPage({ navigate }: Props) {
             <div className="font-mono-tech text-xs mb-6" style={{ color: "var(--text-dim)", letterSpacing: "0.15em" }}>COMPANY MILESTONES</div>
             <div className="space-y-0">
               {milestones.map((m, i) => (
-                <div key={m.year} className="flex gap-5">
+                <div key={m.year} className="flex gap-4 sm:gap-5">
                   <div className="flex flex-col items-center">
                     <div
-                      className="flex items-center justify-center font-mono-tech font-bold text-xs rounded-lg w-14 h-8 flex-shrink-0"
+                      className="flex items-center justify-center font-mono-tech font-bold text-xs rounded-lg w-12 sm:w-14 h-8 flex-shrink-0"
                       style={{ background: `color-mix(in srgb, ${m.color} 15%, transparent)`, color: m.color, border: `1px solid color-mix(in srgb, ${m.color} 30%, transparent)` }}
                     >
                       {m.year}
@@ -160,7 +160,7 @@ export default function AboutPage({ navigate }: Props) {
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="text-center mb-14">
             <div className="section-label mb-4">Our Values</div>
-            <h2 className="font-display font-black text-4xl text-[var(--text-main)]">What We Stand For</h2>
+            <h2 className="font-display font-black text-3xl sm:text-4xl text-[var(--text-main)]">What We Stand For</h2>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             {values.map((v) => (
@@ -180,20 +180,20 @@ export default function AboutPage({ navigate }: Props) {
 
       {/* ── Why DWPL ─────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1">
             {/* Image collage */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="img-card rounded-2xl h-48 col-span-2">
+              <div className="img-card relative rounded-2xl h-44 sm:h-48 col-span-2">
                 <img src={IMG.meeting} alt="Team meeting" className="img-cover" />
               </div>
-              <div className="img-card rounded-2xl h-36">
+              <div className="img-card relative rounded-2xl h-32 sm:h-36">
                 <img src={IMG.tech} alt="Tech team" className="img-cover" />
               </div>
-              <div className="img-card rounded-2xl h-36" style={{ background: "color-mix(in srgb, var(--accent) 5%, transparent)", border: "1px solid color-mix(in srgb, var(--accent) 12%, transparent)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <div className="text-center p-4">
-                  <div className="font-display font-black text-4xl heading-highlight">15+</div>
-                  <div className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>Years of Excellence</div>
+              <div className="img-card relative rounded-2xl h-32 sm:h-36" style={{ background: "color-mix(in srgb, var(--accent) 5%, transparent)", border: "1px solid color-mix(in srgb, var(--accent) 12%, transparent)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div className="text-center p-3">
+                  <div className="font-display font-black text-3xl sm:text-4xl heading-highlight">15+</div>
+                  <div className="text-[0.7rem] sm:text-xs mt-1" style={{ color: "var(--text-dim)" }}>Years of Excellence</div>
                 </div>
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function AboutPage({ navigate }: Props) {
 
           <div className="order-1 lg:order-2">
             <div className="section-label mb-5">Why Digital World Prodigy</div>
-            <h2 className="font-display font-bold text-4xl text-[var(--text-main)] mb-8 leading-tight">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] mb-8 leading-tight">
               What Makes Us<br />
               <span className="heading-highlight">Different</span>
             </h2>
@@ -234,7 +234,7 @@ export default function AboutPage({ navigate }: Props) {
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="text-center mb-14">
             <div className="section-label mb-4">Leadership Team</div>
-            <h2 className="font-display font-black text-4xl text-[var(--text-main)]">
+            <h2 className="font-display font-black text-3xl sm:text-4xl text-[var(--text-main)]">
               The People Behind<br />
               <span className="heading-highlight">Digital World Prodigy</span>
             </h2>
@@ -250,7 +250,7 @@ export default function AboutPage({ navigate }: Props) {
                 <div>
                   {/* Profile Photo */}
                   <div
-                    className="w-28 h-28 rounded-2xl overflow-hidden mb-5 border-2 relative transition-transform group-hover:scale-105"
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden mb-5 border-2 relative transition-transform group-hover:scale-105"
                     style={{ borderColor: `color-mix(in srgb, ${m.color} 40%, transparent)` }}
                   >
                     {m.image ? (
@@ -288,7 +288,7 @@ export default function AboutPage({ navigate }: Props) {
 
       {/* ── Stats + CTA ──────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 mb-16">
           {[
             { num: "30+", label: "Projects" },
             { num: "20+", label: "Clients" },
@@ -297,7 +297,7 @@ export default function AboutPage({ navigate }: Props) {
             { num: "25+", label: "Experts" },
             { num: "12+", label: "Industries" },
           ].map((s) => (
-            <div key={s.label} className="card p-5 text-center">
+            <div key={s.label} className="card p-4 sm:p-5 text-center">
               <div className="font-display font-black text-2xl heading-highlight mb-1">{s.num}</div>
               <div className="text-xs" style={{ color: "var(--text-dim)" }}>{s.label}</div>
             </div>
@@ -305,13 +305,13 @@ export default function AboutPage({ navigate }: Props) {
         </div>
 
         <div className="text-center">
-          <h2 className="font-display font-bold text-3xl text-[var(--text-main)] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[var(--text-main)] mb-4">
             Ready to Work With <span className="heading-highlight">DWPL?</span>
           </h2>
           <p className="text-sm mb-8 max-w-md mx-auto" style={{ color: "var(--text-dim)" }}>
             Talk to us about your technology challenge and let us show you what we can do for your organisation.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mobile-stack-btn">
             <button onClick={() => navigate("contact")} className="btn-primary">Request Consultation →</button>
             <button onClick={() => navigate("solutions")} className="btn-outline">View Our Solutions</button>
           </div>

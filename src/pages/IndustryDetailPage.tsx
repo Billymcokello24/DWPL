@@ -112,7 +112,7 @@ export default function IndustryDetailPage({ industryId, navigate }: Props) {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border" style={{ borderColor: "var(--card-border)" }}>
-            <img src={industry.overviewImg} alt={industry.name} className="img-cover h-96" />
+            <img src={industry.overviewImg} alt={industry.name} className="img-cover h-64 sm:h-80 md:h-96" />
             <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(7,13,24,0.9) 100%)" }} />
             <div className="absolute bottom-6 left-6 right-6">
               <span className="text-xs font-mono-tech uppercase tracking-widest text-[var(--accent)]">

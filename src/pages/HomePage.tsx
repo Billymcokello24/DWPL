@@ -120,27 +120,27 @@ export default function HomePage({ navigate }: Props) {
 
         <div className="absolute inset-0 hero-grid pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
-          <div className="max-w-3xl backdrop-blur-[3px] p-8 rounded-2xl" style={{ background: "rgba(0,0,0,0.28)", border: "1px solid rgba(255,255,255,0.07)" }}>
-            <div className="section-label anim-fade-up mb-6">Digital World Prodigy Limited — Kenya</div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 w-full">
+          <div className="max-w-3xl backdrop-blur-[3px] p-5 sm:p-8 rounded-2xl" style={{ background: "rgba(0,0,0,0.28)", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div className="section-label anim-fade-up mb-4 sm:mb-6">Digital World Prodigy Limited — Kenya</div>
 
             <h1
-              className="font-display font-black leading-tight mb-6 anim-fade-up delay-200"
-              style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#ffffff", letterSpacing: "-0.02em" }}
+              className="font-display font-black leading-tight mb-5 anim-fade-up delay-200"
+              style={{ fontSize: "clamp(1.9rem, 7vw, 4.5rem)", color: "#ffffff", letterSpacing: "-0.02em" }}
             >
               Enterprise Technology <br />
               <span className="heading-highlight">Without Limits.</span>
             </h1>
 
-            <p className="text-lg leading-relaxed mb-4 max-w-2xl anim-fade-up delay-300 font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>
+            <p className="text-base sm:text-lg leading-relaxed mb-4 max-w-2xl anim-fade-up delay-300 font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>
               We design, deploy, secure and manage the technology that powers modern organisations across East Africa.
             </p>
 
-            <div className="font-mono-tech text-xs tracking-widest mb-10 anim-fade-up delay-400 font-semibold" style={{ color: "rgba(255,255,255,0.50)" }}>
+            <div className="font-mono-tech text-[0.65rem] sm:text-xs tracking-wider sm:tracking-widest mb-8 sm:mb-10 anim-fade-up delay-400 font-semibold break-words" style={{ color: "rgba(255,255,255,0.50)" }}>
               INFRASTRUCTURE · CLOUD · CYBERSECURITY · SOFTWARE · AI · DIGITAL TRANSFORMATION
             </div>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-14 anim-fade-up delay-400">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-14 anim-fade-up delay-400 mobile-stack-btn">
               <button onClick={() => navigate("solutions")} className="btn-primary w-full sm:w-auto justify-center" style={{ fontSize: "0.95rem", padding: "0.85rem 2rem" }}>
                 Explore Solutions →
               </button>
@@ -150,9 +150,9 @@ export default function HomePage({ navigate }: Props) {
             </div>
 
             {/* Badges */}
-            <div className="flex flex-wrap gap-x-8 gap-y-3 anim-fade-up delay-400">
+            <div className="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-2.5 anim-fade-up delay-400">
               {["Enterprise Technology", "Secure by Design", "End-to-End Delivery", "24/7 Support"].map((badge) => (
-                <div key={badge} className="flex items-center gap-2 text-sm font-semibold" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <div key={badge} className="flex items-center gap-2 text-xs sm:text-sm font-semibold" style={{ color: "rgba(255,255,255,0.75)" }}>
                   <CheckCircleIcon size={16} color="var(--accent)" />
                   <span>{badge}</span>
                 </div>

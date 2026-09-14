@@ -232,13 +232,13 @@ export default function PartnersPage({ navigate }: Props) {
                 </div>
 
                 <div
-                  className="pt-4 border-t flex items-center justify-between text-xs font-mono-tech"
+                  className="pt-4 border-t flex items-center justify-between text-xs font-mono-tech gap-2"
                   style={{ borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
                 >
-                  <span className="truncate max-w-[200px]" style={{ color: client.color }}>
+                  <span className="truncate flex-1 min-w-0 pr-2 font-semibold" style={{ color: client.color }}>
                     {client.stats}
                   </span>
-                  <ArrowRightIcon size={14} color={client.color} />
+                  <ArrowRightIcon size={14} color={client.color} className="shrink-0" />
                 </div>
               </div>
             );

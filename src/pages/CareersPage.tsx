@@ -92,12 +92,12 @@ export default function CareersPage({ navigate }: Props) {
           </div>
 
           {/* Culture Banner Image */}
-          <div className="card overflow-hidden relative h-64 rounded-2xl border" style={{ borderColor: "var(--border-subtle)" }}>
-            <img src={IMG.culture} alt="DWPL Culture" className="img-cover" />
+          <div className="card overflow-hidden relative min-h-[220px] sm:h-64 rounded-2xl border flex items-center" style={{ borderColor: "var(--border-subtle)" }}>
+            <img src={IMG.culture} alt="DWPL Culture" className="img-cover absolute inset-0" />
             <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
-            <div className="absolute left-8 top-1/2 -translate-y-1/2 max-w-lg">
+            <div className="relative p-6 sm:p-8 max-w-lg z-10">
               <span className="section-label text-xs mb-3 inline-block">Team Culture</span>
-              <h3 className="font-display font-bold text-2xl mb-2" style={{ color: 'var(--text-main)' }}>Build Your Technology Career</h3>
+              <h3 className="font-display font-bold text-xl sm:text-2xl mb-2 text-white">Build Your Technology Career</h3>
               <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
                 We foster an environment of technical rigor, continuous learning, and client delivery excellence.
               </p>

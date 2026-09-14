@@ -92,7 +92,7 @@ export default function ServiceDetailPage({ serviceId, navigate }: Props) {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border" style={{ borderColor: "var(--card-border)" }}>
-            <img src={service.overviewImg} alt={service.name} className="img-cover h-96" />
+            <img src={service.overviewImg} alt={service.name} className="img-cover h-64 sm:h-80 md:h-96" />
             <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(7,13,24,0.9) 100%)" }} />
             <div className="absolute bottom-6 left-6 right-6">
               <span className="text-xs font-mono-tech uppercase tracking-widest text-[var(--accent)]">
@@ -145,7 +145,7 @@ export default function ServiceDetailPage({ serviceId, navigate }: Props) {
         {/* ── METHODOLOGY & PROCESS ────────────────────────────── */}
         <div className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border h-96" style={{ borderColor: "var(--card-border)" }}>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border h-64 sm:h-80 md:h-96" style={{ borderColor: "var(--card-border)" }}>
               <img src={service.methodologyImg} alt="Methodology" className="img-cover" />
               <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(7,13,24,0.8) 0%, transparent 100%)" }} />
               <div className="absolute left-8 top-1/2 -translate-y-1/2 max-w-sm">

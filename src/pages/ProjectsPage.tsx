@@ -128,12 +128,12 @@ export default function ProjectsPage({ navigate }: Props) {
           <div key={cs.id} className="card overflow-hidden group">
             <div className="grid md:grid-cols-5 gap-0">
               {/* Image */}
-              <div className="md:col-span-2 relative h-52 md:h-auto overflow-hidden" style={{ minHeight: "200px" }}>
+              <div className="md:col-span-2 relative h-48 sm:h-56 md:h-auto overflow-hidden" style={{ minHeight: "180px" }}>
                 <img src={cs.img} alt={cs.title} className="img-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0" style={{ background: `linear-gradient(90deg, transparent 60%, var(--bg) 100%)` }} />
-                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-transparent to-[var(--card-bg)] opacity-80" />
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex flex-wrap gap-1.5 sm:gap-2">
                   {cs.tags.map((t) => (
-                    <span key={t} className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "var(--card-bg)", color: cs.color, border: "1px solid var(--border-subtle)" }}>{t}</span>
+                    <span key={t} className="text-[0.65rem] sm:text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "var(--card-bg)", color: cs.color, border: "1px solid var(--border-subtle)" }}>{t}</span>
                   ))}
                 </div>
               </div>

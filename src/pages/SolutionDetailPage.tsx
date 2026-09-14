@@ -201,13 +201,13 @@ export default function SolutionDetailPage({ solutionId, navigate }: Props) {
       </section>
 
       {/* ── Visual Feature Showcase ──────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="max-w-7xl mx-auto px-6 py-16 sm:py-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[var(--card-border)]">
             <img
               src={imgs.features}
               alt={`${solution.title} features`}
-              className="img-cover h-[420px]"
+              className="img-cover h-60 sm:h-80 md:h-[420px]"
             />
             <div
               className="absolute inset-0"
@@ -231,7 +231,7 @@ export default function SolutionDetailPage({ solutionId, navigate }: Props) {
 
           <div>
             <span className="section-label mb-4">What We Deliver</span>
-            <h2 className="font-display font-bold text-3xl text-[var(--text-main)] mb-6">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[var(--text-main)] mb-6">
               Comprehensive{" "}
               <span className="heading-highlight">{solution.title}</span>{" "}
               Features
@@ -260,12 +260,12 @@ export default function SolutionDetailPage({ solutionId, navigate }: Props) {
       </section>
 
       {/* ── Benefits & Use Cases ──────────────────────────────── */}
-      <section className="band py-20">
+      <section className="band py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 sm:mb-20">
             <div>
               <div className="section-label mb-6">Business Benefits</div>
-              <h2 className="font-display font-bold text-3xl text-[var(--text-main)] mb-8">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl text-[var(--text-main)] mb-8">
                 Why Organizations Choose{" "}
                 <span className="heading-highlight">{solution.title}</span>
               </h2>
@@ -294,7 +294,7 @@ export default function SolutionDetailPage({ solutionId, navigate }: Props) {
               <img
                 src={imgs.benefits}
                 alt={`${solution.title} benefits`}
-                className="img-cover h-[380px]"
+                className="img-cover h-60 sm:h-80 md:h-[380px]"
               />
               <div
                 className="absolute inset-0"
