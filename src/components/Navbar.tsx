@@ -210,133 +210,149 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
             </button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg transition-colors cursor-pointer"
-              style={{ background: "var(--border-subtle)", color: "var(--text-main)" }}
-              aria-label="Toggle Menu"
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl transition-colors cursor-pointer shrink-0 border"
+              style={{ background: "var(--surface)", borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
+              aria-label="Toggle Navigation Menu"
             >
               {mobileOpen ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
               ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
               )}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* ── MOBILE SIDE-DRAWER MENU (60% WIDTH) ────────────────── */}
-      {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 flex justify-end">
-          {/* Dark Backdrop Overlay */}
-          <div
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity"
-            onClick={() => setMobileOpen(false)}
-          />
+      {/* ── MOBILE SIDE-DRAWER MENU ──────────────────────────────── */}
+      <div
+        className={`lg:hidden fixed inset-0 z-50 flex justify-end transition-opacity duration-300 ${
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Dark Backdrop Overlay */}
+        <div
+          className={`fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileOpen(false)}
+        />
 
-          {/* 60% Width Sliding Drawer */}
-          <div
-            className="relative w-[60%] min-w-[270px] max-w-[360px] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 transition-transform duration-300"
-            style={{
-              background: "var(--surface)",
-              borderLeft: "1px solid var(--card-border)",
-            }}
-          >
-            <div>
-              {/* Drawer Header */}
-              <div className="p-4 border-b flex items-center justify-between" style={{ borderColor: "var(--border-subtle)" }}>
-                <div className="flex items-center gap-2">
-                  <div className="bg-white p-0.5 rounded-lg border border-slate-200 flex items-center justify-center shrink-0 overflow-hidden h-7 w-7">
-                    <img src="/logos/dwl-logo.png" alt="DWPL Logo" className="h-5 w-auto object-contain" />
-                  </div>
-                  <span className="font-display font-bold text-xs" style={{ color: "var(--text-main)" }}>DWPL Menu</span>
-                </div>
-
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer"
-                  aria-label="Close Menu"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </button>
+        {/* Sliding Drawer Container */}
+        <div
+          className={`relative w-[80vw] max-w-[320px] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 transform transition-transform duration-300 ease-out ${
+            mobileOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{
+            background: "var(--surface)",
+            borderLeft: "1px solid var(--card-border)",
+          }}
+        >
+          <div>
+            {/* Drawer Header */}
+            <div className="p-4 border-b flex items-center justify-between sticky top-0 bg-[var(--surface)] z-10" style={{ borderColor: "var(--border-subtle)" }}>
+              <div className="flex items-center gap-2.5">
+                <img src="/logos/dwl-logo.png" alt="DWPL Logo" className="h-7 w-auto object-contain" />
+                <span className="font-display font-bold text-sm tracking-tight" style={{ color: "var(--text-main)" }}>DWPL Menu</span>
               </div>
 
-              {/* Drawer Nav Links */}
-              <div className="p-3 space-y-1">
-                {navItems.map((item) => (
-                  <button
-                    key={item.page}
-                    onClick={() => go(item.page)}
-                    className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center justify-between cursor-pointer"
-                    style={{
-                      color: currentPage === item.page ? "var(--accent)" : "var(--text-muted)",
-                      background: currentPage === item.page ? "rgba(56,189,248,0.1)" : "transparent",
-                    }}
-                  >
-                    <span>{item.label}</span>
-                    {currentPage === item.page && <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent)" }} />}
-                  </button>
-                ))}
-
-                {/* Solutions Accordion */}
-                <div>
-                  <button
-                    onClick={() => setMobileExpanded(!mobileExpanded)}
-                    className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between cursor-pointer transition-colors"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    <span>Solutions</span>
-                    <svg
-                      width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor"
-                      strokeWidth="1.5" strokeLinecap="round"
-                      style={{ transition: "transform 0.2s", transform: mobileExpanded ? "rotate(180deg)" : "none" }}
-                    >
-                      <path d="M2 4l4 4 4-4" />
-                    </svg>
-                  </button>
-
-                  {mobileExpanded && (
-                    <div className="pl-2 pr-1 py-2 space-y-1 max-h-56 overflow-y-auto no-scrollbar rounded-lg my-1" style={{ background: "var(--bg)" }}>
-                      {solutionsList.map(({ id, label, Icon }) => (
-                        <button
-                          key={id}
-                          onClick={() => go("solution-detail", id)}
-                          className="w-full flex items-center gap-2 text-left px-2.5 py-1.5 rounded-md text-[0.72rem] cursor-pointer hover:text-[var(--accent)]"
-                          style={{ color: "var(--text-muted)" }}
-                        >
-                          <Icon size={12} color="var(--accent)" />
-                          <span className="truncate">{label}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer border"
+                style={{ background: "var(--bg)", borderColor: "var(--border-subtle)" }}
+                aria-label="Close Menu"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
             </div>
 
-            {/* Drawer Footer Actions */}
-            <div className="p-4 border-t space-y-2.5" style={{ borderColor: "var(--border-subtle)" }}>
-              <button
-                onClick={toggleTheme}
-                className="w-full py-2 px-3 rounded-xl text-xs font-medium flex items-center justify-between cursor-pointer border"
-                style={{ background: "var(--bg)", borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
-              >
-                <span>Theme Mode</span>
-                <span className="text-[0.68rem] font-mono-tech font-bold uppercase" style={{ color: "var(--accent)" }}>
-                  {theme === "light" ? "Light ☀️" : "Dark 🌙"}
-                </span>
-              </button>
+            {/* Drawer Nav Links */}
+            <div className="p-3.5 space-y-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.page}
+                  onClick={() => go(item.page)}
+                  className="w-full text-left px-4 py-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-between cursor-pointer min-h-[44px]"
+                  style={{
+                    color: currentPage === item.page ? "var(--accent)" : "var(--text-muted)",
+                    background: currentPage === item.page ? "rgba(56,189,248,0.12)" : "transparent",
+                    border: currentPage === item.page ? "1px solid rgba(56,189,248,0.25)" : "1px solid transparent",
+                  }}
+                >
+                  <span>{item.label}</span>
+                  {currentPage === item.page && <span className="w-2 h-2 rounded-full" style={{ background: "var(--accent)" }} />}
+                </button>
+              ))}
 
-              <button onClick={() => go("contact")} className="btn-primary w-full justify-center text-xs py-2.5">
-                Consultation <ArrowRightIcon size={14} />
-              </button>
+              {/* Solutions Accordion */}
+              <div className="pt-1">
+                <button
+                  onClick={() => setMobileExpanded(!mobileExpanded)}
+                  className="w-full text-left px-4 py-3 rounded-xl text-xs font-semibold flex items-center justify-between cursor-pointer transition-colors min-h-[44px]"
+                  style={{
+                    color: (currentPage === "solutions" || currentPage === "solution-detail") ? "var(--accent)" : "var(--text-muted)",
+                    background: (currentPage === "solutions" || currentPage === "solution-detail") ? "rgba(56,189,248,0.08)" : "transparent",
+                  }}
+                >
+                  <span>Solutions Catalogue</span>
+                  <svg
+                    width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                    strokeWidth="2" strokeLinecap="round"
+                    style={{ transition: "transform 0.25s", transform: mobileExpanded ? "rotate(180deg)" : "none" }}
+                  >
+                    <path d="M2 4l4 4 4-4" />
+                  </svg>
+                </button>
 
-              <button onClick={() => go("support")} className="btn-outline w-full justify-center text-xs py-2">
-                Support Center
-              </button>
+                {mobileExpanded && (
+                  <div className="pl-3 pr-1 py-2 space-y-1 max-h-60 overflow-y-auto no-scrollbar rounded-xl my-1 border" style={{ background: "var(--bg)", borderColor: "var(--border-subtle)" }}>
+                    <button
+                      onClick={() => go("solutions")}
+                      className="w-full flex items-center gap-2 text-left px-3 py-2 rounded-lg text-xs font-bold cursor-pointer"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      <span>Explore All 18 Solutions →</span>
+                    </button>
+                    {solutionsList.map(({ id, label, Icon }) => (
+                      <button
+                        key={id}
+                        onClick={() => go("solution-detail", id)}
+                        className="w-full flex items-center gap-2.5 text-left px-3 py-2 rounded-lg text-[0.75rem] cursor-pointer hover:text-[var(--accent)]"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        <Icon size={14} color="var(--accent)" />
+                        <span className="truncate">{label}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+
+          {/* Drawer Footer Actions */}
+          <div className="p-4 border-t space-y-2.5 sticky bottom-0 bg-[var(--surface)]" style={{ borderColor: "var(--border-subtle)" }}>
+            <button
+              onClick={toggleTheme}
+              className="w-full py-2.5 px-3.5 rounded-xl text-xs font-medium flex items-center justify-between cursor-pointer border min-h-[44px]"
+              style={{ background: "var(--bg)", borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
+            >
+              <span className="font-semibold">Appearance</span>
+              <span className="text-[0.7rem] font-mono-tech font-bold uppercase flex items-center gap-1.5" style={{ color: "var(--accent)" }}>
+                {theme === "light" ? "Light Mode ☀️" : "Dark Mode 🌙"}
+              </span>
+            </button>
+
+            <button onClick={() => go("contact")} className="btn-primary w-full justify-center text-xs py-3 min-h-[44px]">
+              Get Consultation <ArrowRightIcon size={15} />
+            </button>
+
+            <button onClick={() => go("support")} className="btn-outline w-full justify-center text-xs py-2.5 min-h-[44px]">
+              Support Portal
+            </button>
+          </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

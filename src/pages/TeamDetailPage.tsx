@@ -90,8 +90,8 @@ export default function TeamDetailPage({ id, navigate }: Props) {
                 {member.tagline}
               </p>
 
-              <div className="flex flex-wrap gap-3">
-                <button onClick={() => navigate("contact")} className="btn-primary text-xs py-2.5 px-5">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                <button onClick={() => navigate("contact")} className="btn-primary text-xs py-3 px-5 w-full sm:w-auto justify-center">
                   Get in Touch →
                 </button>
                 {member.personalWebsite && (
@@ -99,14 +99,14 @@ export default function TeamDetailPage({ id, navigate }: Props) {
                     href={member.personalWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-outline text-xs py-2.5 px-5 inline-flex items-center gap-1.5"
+                    className="btn-outline text-xs py-3 px-5 inline-flex items-center gap-1.5 w-full sm:w-auto justify-center"
                     style={{ borderColor: member.color, color: member.color }}
                   >
                     <ExternalLinkIcon size={14} color={member.color} />
                     Personal Portfolio Website
                   </a>
                 )}
-                <button onClick={() => navigate("about")} className="btn-outline text-xs py-2.5 px-5">
+                <button onClick={() => navigate("about")} className="btn-outline text-xs py-3 px-5 w-full sm:w-auto justify-center">
                   View Leadership Team
                 </button>
               </div>

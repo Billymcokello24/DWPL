@@ -140,11 +140,11 @@ export default function HomePage({ navigate }: Props) {
               INFRASTRUCTURE · CLOUD · CYBERSECURITY · SOFTWARE · AI · DIGITAL TRANSFORMATION
             </div>
 
-            <div className="flex flex-wrap gap-4 mb-14 anim-fade-up delay-400">
-              <button onClick={() => navigate("solutions")} className="btn-primary" style={{ fontSize: "0.95rem", padding: "0.85rem 2rem" }}>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-14 anim-fade-up delay-400">
+              <button onClick={() => navigate("solutions")} className="btn-primary w-full sm:w-auto justify-center" style={{ fontSize: "0.95rem", padding: "0.85rem 2rem" }}>
                 Explore Solutions →
               </button>
-              <button onClick={() => navigate("contact")} className="btn-outline" style={{ fontSize: "0.95rem", padding: "0.85rem 2rem" }}>
+              <button onClick={() => navigate("contact")} className="btn-outline w-full sm:w-auto justify-center" style={{ fontSize: "0.95rem", padding: "0.85rem 2rem" }}>
                 Start a Project
               </button>
             </div>
