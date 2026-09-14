@@ -285,11 +285,43 @@ html.light .hero-grid {
 
 /* ─── MOBILE MEDIA QUERIES & RESPONSIVE DESIGN ──────────────────── */
 
+/* Mobile Header Bar & Hamburger Button Toggle */
+.dwpl-mobile-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 10px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--text-main) !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  z-index: 50 !important;
+}
+
+@media (min-width: 1024px) {
+  .dwpl-mobile-toggle {
+    display: none !important;
+  }
+}
+
+.dwpl-desktop-nav {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .dwpl-desktop-nav {
+    display: flex !important;
+  }
+}
+
 /* Tablet & Mobile (< 1024px) */
 @media (max-width: 1023px) {
   /* Navigation Bar & Header Height */
   nav {
-    height: 60px !important;
+    height: 64px !important;
   }
   
   /* Mobile Drawer Overlay & Content */
@@ -299,9 +331,9 @@ html.light .hero-grid {
   }
 
   .mobile-drawer-content {
-    width: calc(100vw - 48px) !important;
+    width: calc(100vw - 40px) !important;
     max-width: 320px !important;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6) !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 

@@ -100,13 +100,13 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
           WebkitBackdropFilter: "blur(20px)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-[66px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 w-full">
           {/* Logo */}
-          <button onClick={() => go("home")} className="flex items-center gap-3 group shrink-0 cursor-pointer text-left">
+          <button onClick={() => go("home")} className="flex items-center gap-2.5 shrink-0 cursor-pointer text-left">
             <img
               src="/logos/dwl-logo.png"
               alt="Digital World Prodigy Logo"
-              className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
               style={{ maxWidth: "120px" }}
             />
             <div className="hidden sm:block">
@@ -116,7 +116,7 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="dwpl-desktop-nav items-center gap-0.5">
             {navItems.map((item) => (
               <button
                 key={item.page}
@@ -190,11 +190,11 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
           </div>
 
           {/* Right actions */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer border"
+              className="w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer border shrink-0"
               style={{ background: "var(--surface)", borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
               aria-label="Toggle theme"
               title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
@@ -203,28 +203,28 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
             </button>
 
             {/* Desktop-only action buttons */}
-            <button onClick={() => go("support")} className="hidden lg:flex btn-ghost text-xs py-1.5">
+            <button onClick={() => go("support")} className="dwpl-desktop-nav btn-ghost text-xs py-1.5">
               Support
             </button>
-            <button onClick={() => go("contact")} className="btn-primary text-xs py-2 px-4 hidden lg:flex">
+            <button onClick={() => go("contact")} className="dwpl-desktop-nav btn-primary text-xs py-2 px-4">
               Get Consultation
             </button>
 
-            {/* Mobile Hamburger Menu Toggle Button */}
+            {/* Mobile Hamburger Menu Toggle Button - Always visible on < 1024px */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl transition-all cursor-pointer shrink-0 border shadow-xs"
+              className="dwpl-mobile-toggle"
               style={{
-                background: mobileOpen ? "rgba(56,189,248,0.15)" : "var(--surface)",
+                background: mobileOpen ? "rgba(56,189,248,0.2)" : "var(--surface)",
                 borderColor: mobileOpen ? "var(--accent)" : "var(--border-subtle)",
                 color: mobileOpen ? "var(--accent)" : "var(--text-main)"
               }}
               aria-label="Toggle Navigation Menu"
             >
               {mobileOpen ? (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
               ) : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
               )}
             </button>
           </div>
