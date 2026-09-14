@@ -350,10 +350,25 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
                 <span>Support Center</span>
                 {currentPage === "support" && <span className="w-2 h-2 rounded-full" style={{ background: "var(--accent)" }} />}
               </button>
+
+              {/* Get Consultation CTA Link inside navigation list */}
+              <button
+                onClick={() => go("contact")}
+                className="w-full text-left px-4 py-3 rounded-xl text-xs font-bold transition-all flex items-center justify-between cursor-pointer min-h-[44px] mt-2 shadow-xs"
+                style={{
+                  color: "#FFFFFF",
+                  background: "var(--accent)",
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  <span>Get Consultation</span>
+                </span>
+                <ArrowRightIcon size={15} color="#FFFFFF" />
+              </button>
             </div>
           </div>
 
-          {/* Drawer Footer Actions — Get Consultation Button Prominently Placed Here */}
+          {/* Drawer Footer Actions */}
           <div className="p-4 border-t space-y-2.5 sticky bottom-0 bg-[var(--surface)]" style={{ borderColor: "var(--border-subtle)" }}>
             <button
               onClick={toggleTheme}
@@ -364,10 +379,6 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
               <span className="text-[0.7rem] font-mono-tech font-bold uppercase flex items-center gap-1.5" style={{ color: "var(--accent)" }}>
                 {theme === "light" ? "Light Mode ☀️" : "Dark Mode 🌙"}
               </span>
-            </button>
-
-            <button onClick={() => go("contact")} className="btn-primary w-full justify-center text-xs py-3 min-h-[44px] shadow-lg">
-              Get Consultation <ArrowRightIcon size={15} />
             </button>
           </div>
         </div>
