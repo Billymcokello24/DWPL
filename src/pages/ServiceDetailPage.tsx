@@ -194,51 +194,61 @@ export default function ServiceDetailPage({ serviceId, navigate }: Props) {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid md:grid-cols-3 gap-5 sm:gap-6 items-stretch">
             {service.slaTiers.map((t, i) => (
               <div
                 key={t.tier}
-                className="card p-4 sm:p-8 text-center flex flex-col justify-between"
+                className="card p-5 sm:p-7 flex flex-col justify-between transition-all duration-300"
                 style={
                   i === 1
-                    ? { borderColor: service.color, background: `color-mix(in srgb, ${service.color} 5%, var(--card-bg))` }
-                    : {}
+                    ? { borderColor: service.color, background: `color-mix(in srgb, ${service.color} 6%, var(--card-bg))`, boxShadow: `0 8px 30px -10px color-mix(in srgb, ${service.color} 25%, transparent)` }
+                    : { borderColor: "var(--card-border)" }
                 }
               >
                 <div>
-                  {i === 1 && (
-                    <span className="section-label text-[0.6rem] mb-3 sm:mb-4 inline-block">Most Popular</span>
-                  )}
-                  <h3 className="font-display font-bold text-lg sm:text-xl mb-3 sm:mb-4" style={{ color: "var(--text-main)" }}>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span
+                      className="text-[0.62rem] font-mono-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                      style={
+                        i === 1
+                          ? { background: service.color, color: "#050B14" }
+                          : { background: "var(--surface)", border: "1px solid var(--card-border)", color: "var(--text-muted)" }
+                      }
+                    >
+                      {i === 1 ? "MOST POPULAR" : `TIER 0${i + 1}`}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display font-black text-xl mb-3" style={{ color: "var(--text-main)" }}>
                     {t.tier}
                   </h3>
 
-                  <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm mb-6 sm:mb-8">
-                    <div className="p-2.5 rounded-xl" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
-                      <div className="text-[0.62rem] uppercase tracking-wider font-mono-tech mb-0.5" style={{ color: "var(--text-dim)" }}>
+                  <div className="space-y-2.5 text-xs sm:text-sm mb-6">
+                    <div className="p-3 rounded-xl flex items-center justify-between gap-2" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
+                      <span className="text-[0.65rem] uppercase tracking-wider font-mono-tech" style={{ color: "var(--text-dim)" }}>
                         Response Time
-                      </div>
-                      <div className="font-bold text-sm sm:text-base" style={{ color: service.color }}>
+                      </span>
+                      <span className="font-bold text-sm sm:text-base" style={{ color: service.color }}>
                         {t.responseTime}
-                      </div>
+                      </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
-                      <div className="text-[0.62rem] uppercase tracking-wider font-mono-tech mb-0.5" style={{ color: "var(--text-dim)" }}>
+                    <div className="p-3 rounded-xl flex flex-col gap-0.5 text-left" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
+                      <span className="text-[0.65rem] uppercase tracking-wider font-mono-tech" style={{ color: "var(--text-dim)" }}>
                         Support Hours
-                      </div>
-                      <div className="font-medium" style={{ color: "var(--text-main)" }}>
+                      </span>
+                      <span className="font-semibold text-xs sm:text-sm" style={{ color: "var(--text-main)" }}>
                         {t.coverage}
-                      </div>
+                      </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
-                      <div className="text-[0.62rem] uppercase tracking-wider font-mono-tech mb-0.5" style={{ color: "var(--text-dim)" }}>
+                    <div className="p-3 rounded-xl flex items-center justify-between gap-2" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
+                      <span className="text-[0.65rem] uppercase tracking-wider font-mono-tech" style={{ color: "var(--text-dim)" }}>
                         Target Uptime
-                      </div>
-                      <div className="font-medium" style={{ color: "var(--text-main)" }}>
+                      </span>
+                      <span className="font-semibold text-xs sm:text-sm" style={{ color: "var(--text-main)" }}>
                         {t.targetUptime}
-                      </div>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -247,7 +257,7 @@ export default function ServiceDetailPage({ serviceId, navigate }: Props) {
                   onClick={() => navigate("contact")}
                   className={i === 1 ? "btn-primary w-full justify-center text-xs sm:text-sm" : "btn-outline w-full justify-center text-xs sm:text-sm"}
                 >
-                  Choose {t.tier}
+                  Select {t.tier}
                 </button>
               </div>
             ))}

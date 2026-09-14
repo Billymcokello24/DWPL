@@ -143,38 +143,48 @@ export default function ServicesPage({ navigate }: Props) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-5 sm:gap-6 max-w-5xl mx-auto items-stretch">
             {[
-              { name: "Essential Tier", target: "SMEs & Branch Offices", response: "< 4 Hours", coverage: "Business Hours (8am - 5pm)", highlight: false },
-              { name: "Professional Tier", target: "Growing Organizations (50-200 users)", response: "< 1 Hour", coverage: "Extended (7am - 9pm)", highlight: true },
-              { name: "Enterprise Mission-Critical", target: "Large Scale & Public Infrastructure", response: "< 15 Mins", coverage: "24/7/365 Non-Stop Dedicated", highlight: false },
+              { name: "Essential Tier", target: "SMEs & Branch Offices", response: "< 4 Hours", coverage: "Business Hours (8am - 5pm)", highlight: false, badge: "STANDARD SLA" },
+              { name: "Professional Tier", target: "Growing Organizations (50-200 users)", response: "< 1 Hour", coverage: "Extended (7am - 9pm)", highlight: true, badge: "MOST POPULAR" },
+              { name: "Enterprise Critical", target: "Large Scale & Public Infrastructure", response: "< 15 Mins", coverage: "24/7/365 Dedicated Support", highlight: false, badge: "MISSION CRITICAL" },
             ].map((pkg) => (
               <div
                 key={pkg.name}
-                className="card p-4 sm:p-8 relative flex flex-col justify-between"
-                style={pkg.highlight ? { border: "1px solid var(--accent)", background: "var(--card-bg)" } : {}}
+                className="card p-5 sm:p-7 relative flex flex-col justify-between transition-all duration-300 hover:border-[var(--accent)]"
+                style={
+                  pkg.highlight
+                    ? { border: "1px solid var(--accent)", background: "color-mix(in srgb, var(--accent) 5%, var(--card-bg))", boxShadow: "0 8px 30px -10px rgba(22,184,255,0.2)" }
+                    : { border: "1px solid var(--card-border)" }
+                }
               >
-                {pkg.highlight && (
-                  <div
-                    className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[0.65rem] sm:text-xs font-mono-tech font-bold uppercase tracking-wider shadow-md"
-                    style={{ background: "var(--accent)", color: "#050B14" }}
-                  >
-                    MOST POPULAR
-                  </div>
-                )}
                 <div>
-                  <div className="font-display font-black text-lg sm:text-2xl text-[var(--text-main)] mb-1 mt-1 leading-tight">{pkg.name}</div>
-                  <div className="text-xs mb-4 sm:mb-6 text-[var(--text-muted)]">{pkg.target}</div>
+                  {/* Top pill badge */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span
+                      className="text-[0.62rem] font-mono-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                      style={
+                        pkg.highlight
+                          ? { background: "var(--accent)", color: "#050B14" }
+                          : { background: "var(--surface)", border: "1px solid var(--card-border)", color: "var(--text-muted)" }
+                      }
+                    >
+                      {pkg.badge}
+                    </span>
+                  </div>
 
-                  <div className="space-y-2.5 sm:space-y-4 mb-6 sm:mb-8 text-xs sm:text-sm">
-                    <div className="p-2.5 sm:p-3 rounded-xl" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
-                      <div className="text-[0.62rem] sm:text-[0.65rem] uppercase font-mono-tech tracking-wider text-[var(--text-muted)] mb-0.5">Response Time</div>
-                      <div className="font-bold text-sm sm:text-base text-[var(--accent)]">{pkg.response}</div>
+                  <h3 className="font-display font-black text-xl sm:text-2xl text-[var(--text-main)] mb-1 leading-tight">{pkg.name}</h3>
+                  <p className="text-xs mb-5 text-[var(--text-muted)]">{pkg.target}</p>
+
+                  <div className="space-y-2.5 mb-6 text-xs sm:text-sm">
+                    <div className="p-3 rounded-xl flex items-center justify-between gap-2" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
+                      <span className="text-[0.65rem] uppercase font-mono-tech tracking-wider text-[var(--text-muted)] shrink-0">Response Time</span>
+                      <span className="font-bold text-sm sm:text-base text-[var(--accent)]">{pkg.response}</span>
                     </div>
 
-                    <div className="p-2.5 sm:p-3 rounded-xl" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
-                      <div className="text-[0.62rem] sm:text-[0.65rem] uppercase font-mono-tech tracking-wider text-[var(--text-muted)] mb-0.5">Coverage Hours</div>
-                      <div className="font-medium text-[var(--text-main)]">{pkg.coverage}</div>
+                    <div className="p-3 rounded-xl flex flex-col gap-0.5 text-left" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
+                      <span className="text-[0.65rem] uppercase font-mono-tech tracking-wider text-[var(--text-muted)]">Coverage Hours</span>
+                      <span className="font-semibold text-xs sm:text-sm text-[var(--text-main)]">{pkg.coverage}</span>
                     </div>
                   </div>
                 </div>
