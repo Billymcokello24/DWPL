@@ -1,8 +1,14 @@
 {
   "title": "Digital World Prodigy Limited — Enterprise Technology Solutions",
-  "description": "This platform showcases comprehensive IT solutions for businesses, featuring a modern interface with detailed service descriptions, company information, and contact options.",
+  "description": "Digital World Prodigy Limited (DWPL) delivers SLA-backed enterprise technology services — IT consulting, network engineering, managed cloud operations, and cybersecurity.",
+  "openGraph": {
+    "title": "Digital World Prodigy Limited — Enterprise Technology Solutions",
+    "siteName": "Digital World Prodigy Limited",
+    "description": "Digital World Prodigy Limited (DWPL) delivers SLA-backed enterprise technology services — IT consulting, network engineering, managed cloud operations, and cybersecurity.",
+    "image": "/logos/dwl-logo.png"
+  },
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
