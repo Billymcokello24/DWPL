@@ -17,19 +17,19 @@ export default function ServicesPage({ navigate }: Props) {
         <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
         <div className="absolute inset-0 hero-grid pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-end">
             <div>
               <div className="section-label mb-3 sm:mb-5">Our Service Specializations</div>
-              <h1 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-[var(--text-main)] mb-4 sm:mb-5 leading-tight">
+              <h1 className="font-display font-black text-2.5xl sm:text-5xl md:text-6xl text-[var(--text-main)] mb-3 sm:mb-5 leading-tight">
                 Enterprise Execution & <span className="heading-highlight">Managed Support</span>
               </h1>
-              <p className="text-base sm:text-lg leading-relaxed text-[var(--text-muted)]">
+              <p className="text-xs sm:text-lg leading-relaxed text-[var(--text-muted)]">
                 DWPL delivers SLA-backed technology services — from strategic IT consulting and network engineering to 24/7 managed cloud operations and cybersecurity.
               </p>
             </div>
 
-            {/* Quick nav cards */}
+            {/* Quick nav cards - fully visible text on mobile */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
               {servicesData.map((service) => {
                 const ServiceIcon = service.icon;
@@ -37,7 +37,7 @@ export default function ServicesPage({ navigate }: Props) {
                   <button
                     key={service.id}
                     onClick={() => navigate("service-detail", service.id)}
-                    className="card p-3 sm:p-4 text-left group transition-all hover:scale-[1.02] cursor-pointer border flex sm:flex-col items-center sm:items-start gap-3 sm:gap-0"
+                    className="card p-3 sm:p-4 text-left group transition-all hover:scale-[1.02] cursor-pointer border flex items-center gap-3 sm:flex-col sm:items-start sm:gap-0"
                     style={{ borderColor: "var(--card-border)" }}
                   >
                     <div
@@ -50,11 +50,11 @@ export default function ServicesPage({ navigate }: Props) {
                       <ServiceIcon size={18} color={service.color} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="font-display font-bold text-[var(--text-main)] text-xs truncate">
+                      <div className="font-display font-bold text-[var(--text-main)] text-xs sm:text-sm leading-snug break-words">
                         {service.name}
                       </div>
-                      <div className="text-[0.65rem] font-mono-tech mt-0.5 sm:mt-1" style={{ color: service.color }}>
-                        Explore Page →
+                      <div className="text-[0.65rem] font-mono-tech mt-0.5 sm:mt-1 font-semibold" style={{ color: service.color }}>
+                        Explore Specialization →
                       </div>
                     </div>
                   </button>
@@ -74,10 +74,10 @@ export default function ServicesPage({ navigate }: Props) {
               <div className="grid lg:grid-cols-2 gap-6 lg:gap-14 items-center">
                 {/* Image side */}
                 <div className={`order-1 ${idx % 2 === 1 ? "lg:order-2" : "lg:order-1"}`}>
-                  <div className="relative rounded-2xl overflow-hidden h-52 sm:h-80 lg:h-96 shadow-2xl border" style={{ borderColor: `color-mix(in srgb, ${cat.color} 30%, transparent)` }}>
+                  <div className="relative rounded-2xl overflow-hidden min-h-[200px] h-52 sm:h-80 lg:h-96 shadow-2xl border" style={{ borderColor: `color-mix(in srgb, ${cat.color} 30%, transparent)` }}>
                     <img src={cat.overviewImg} alt={cat.name} className="img-cover transition-transform duration-700 hover:scale-105" />
-                    <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(7,13,24,0.95) 100%)" }} />
-                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-center gap-3 sm:gap-4">
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 30%, rgba(7,13,24,0.95) 100%)" }} />
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 flex items-center gap-3 sm:gap-4">
                       <div
                         className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shadow-lg shrink-0"
                         style={{
@@ -87,9 +87,9 @@ export default function ServicesPage({ navigate }: Props) {
                       >
                         <CategoryIcon size={20} color={cat.color} />
                       </div>
-                      <div className="min-w-0">
-                        <div className="font-display font-bold text-white text-sm sm:text-lg truncate">{cat.name}</div>
-                        <div className="text-[0.7rem] sm:text-xs font-mono-tech text-slate-300 truncate">{cat.deliverables[0]}</div>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-display font-bold text-white text-sm sm:text-lg leading-tight break-words">{cat.name}</div>
+                        <div className="text-[0.68rem] sm:text-xs font-mono-tech text-slate-300 leading-tight break-words mt-0.5">{cat.deliverables[0]}</div>
                       </div>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ export default function ServicesPage({ navigate }: Props) {
                   <h2 className="font-display font-bold text-xl sm:text-3xl text-[var(--text-main)] mb-2 sm:mb-4 leading-tight">
                     {cat.name}
                   </h2>
-                  <p className="text-xs sm:text-base leading-relaxed mb-4 sm:mb-6" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-xs sm:text-base leading-relaxed mb-4 sm:mb-6 text-[var(--text-muted)]">
                     {cat.tagline}
                   </p>
 
@@ -111,7 +111,7 @@ export default function ServicesPage({ navigate }: Props) {
                     {cat.capabilities.slice(0, 4).map((cap) => (
                       <div key={cap.title} className="card p-3 sm:p-4 border" style={{ borderColor: "var(--card-border)" }}>
                         <div className="w-2 h-2 rounded-full mb-1.5" style={{ background: cat.color }} />
-                        <div className="font-display font-semibold text-[var(--text-main)] text-xs sm:text-sm mb-1">{cap.title}</div>
+                        <div className="font-display font-semibold text-[var(--text-main)] text-xs sm:text-sm mb-1 leading-snug">{cap.title}</div>
                         <p className="text-[0.75rem] sm:text-xs leading-relaxed text-[var(--text-muted)]">{cap.desc}</p>
                       </div>
                     ))}
@@ -121,7 +121,7 @@ export default function ServicesPage({ navigate }: Props) {
                     onClick={() => navigate("service-detail", cat.id)}
                     className="btn-primary w-full sm:w-auto justify-center text-xs sm:text-sm"
                   >
-                    View Full {cat.name} Page <ArrowRightIcon size={16} />
+                    View Details & Capabilities <ArrowRightIcon size={16} />
                   </button>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function ServicesPage({ navigate }: Props) {
                   </div>
                 )}
                 <div>
-                  <div className="font-display font-black text-lg sm:text-2xl text-[var(--text-main)] mb-1 mt-1">{pkg.name}</div>
+                  <div className="font-display font-black text-lg sm:text-2xl text-[var(--text-main)] mb-1 mt-1 leading-tight">{pkg.name}</div>
                   <div className="text-xs mb-4 sm:mb-6 text-[var(--text-muted)]">{pkg.target}</div>
 
                   <div className="space-y-2.5 sm:space-y-4 mb-6 sm:mb-8 text-xs sm:text-sm">

@@ -72,8 +72,8 @@ export default function IndustriesPage({ navigate }: Props) {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-start">
-          {/* Left Industry Selector List (5 Cols on desktop, horizontal scroll on mobile) */}
-          <div className="lg:col-span-5 flex lg:flex-col gap-2 sm:gap-2.5 overflow-x-auto lg:overflow-y-auto max-h-none lg:max-h-[720px] pb-3 lg:pb-0 pr-1 no-scrollbar flex-nowrap lg:flex-wrap">
+          {/* Left Industry Selector (Grid of cards on mobile/tablet, vertical stack on desktop) */}
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 sm:gap-2.5 max-h-none lg:max-h-[720px] lg:overflow-y-auto pr-0 lg:pr-1 no-scrollbar">
             {filteredIndustries.map((ind) => {
               const IconComp = ind.icon;
               const isSelected = selected.id === ind.id;
@@ -81,28 +81,28 @@ export default function IndustriesPage({ navigate }: Props) {
                 <button
                   key={ind.id}
                   onClick={() => setActiveId(ind.id)}
-                  className="w-auto lg:w-full min-w-[180px] sm:min-w-[240px] lg:min-w-0 text-left p-2.5 sm:p-4 rounded-2xl transition-all cursor-pointer border flex items-center gap-2.5 sm:gap-4 group shrink-0 lg:shrink"
+                  className="w-full text-left p-2.5 sm:p-4 rounded-2xl transition-all cursor-pointer border flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3.5 group"
                   style={{
                     background: isSelected ? "var(--card-bg)" : "var(--surface)",
                     borderColor: isSelected ? ind.color : "var(--card-border)",
-                    boxShadow: isSelected ? `0 4px 20px -5px color-mix(in srgb, ${ind.color} 20%, transparent)` : "none",
+                    boxShadow: isSelected ? `0 4px 20px -5px color-mix(in srgb, ${ind.color} 25%, transparent)` : "none",
                   }}
                 >
                   <div
-                    className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-105"
+                    className="w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-105"
                     style={{
                       background: `color-mix(in srgb, ${ind.color} 15%, transparent)`,
                       border: `1px solid color-mix(in srgb, ${ind.color} 30%, transparent)`,
                     }}
                   >
-                    <IconComp size={18} color={ind.color} />
+                    <IconComp size={16} color={ind.color} />
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-display font-bold text-xs sm:text-base text-[var(--text-main)] truncate">
+                    <h3 className="font-display font-bold text-xs sm:text-base text-[var(--text-main)] leading-snug break-words">
                       {ind.name}
                     </h3>
-                    <p className="text-[0.68rem] sm:text-xs text-[var(--text-muted)] truncate mt-0.5">
+                    <p className="text-[0.65rem] sm:text-xs text-[var(--text-muted)] truncate mt-0.5 hidden sm:block">
                       {ind.tagline}
                     </p>
                   </div>
@@ -110,7 +110,7 @@ export default function IndustriesPage({ navigate }: Props) {
                   <ArrowRightIcon
                     size={14}
                     color={isSelected ? ind.color : "var(--text-muted)"}
-                    className="hidden sm:block"
+                    className="hidden lg:block shrink-0"
                   />
                 </button>
               );
@@ -125,7 +125,7 @@ export default function IndustriesPage({ navigate }: Props) {
                 style={{ borderColor: `color-mix(in srgb, ${selected.color} 30%, transparent)` }}
               >
                 {/* Hero Banner for Selected Industry */}
-                <div className="relative h-44 sm:h-64 overflow-hidden">
+                <div className="relative min-h-[160px] h-44 sm:h-64 overflow-hidden">
                   <img
                     src={selected.overviewImg}
                     alt={selected.name}
@@ -152,7 +152,7 @@ export default function IndustriesPage({ navigate }: Props) {
                       </span>
                     </div>
 
-                    <h2 className="font-display font-bold text-lg sm:text-2xl md:text-3xl text-white leading-tight">
+                    <h2 className="font-display font-bold text-lg sm:text-2xl md:text-3xl text-white leading-tight break-words">
                       {selected.name}
                     </h2>
                   </div>
@@ -168,7 +168,7 @@ export default function IndustriesPage({ navigate }: Props) {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-5 sm:mb-8">
                     {selected.stats.map((s) => (
                       <div key={s.label} className="p-2 sm:p-3 rounded-xl text-center" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }}>
-                        <div className="font-display font-black text-base sm:text-xl mb-0.5" style={{ color: selected.color }}>
+                        <div className="font-display font-black text-sm sm:text-xl mb-0.5 break-words" style={{ color: selected.color }}>
                           {s.value}
                         </div>
                         <div className="text-[0.6rem] sm:text-[0.68rem] font-medium leading-tight text-[var(--text-muted)]">
@@ -196,10 +196,10 @@ export default function IndustriesPage({ navigate }: Props) {
                               <SolIcon size={14} color={selected.color} />
                             </div>
                             <div className="min-w-0 flex-1">
-                              <div className="font-display font-semibold text-xs sm:text-sm text-[var(--text-main)]">
+                              <div className="font-display font-semibold text-xs sm:text-sm text-[var(--text-main)] leading-snug">
                                 {sol.title}
                               </div>
-                              <div className="text-[0.68rem] sm:text-xs text-[var(--text-muted)] mt-0.5">
+                              <div className="text-[0.68rem] sm:text-xs text-[var(--text-muted)] mt-0.5 leading-normal">
                                 {sol.desc}
                               </div>
                             </div>
@@ -215,7 +215,7 @@ export default function IndustriesPage({ navigate }: Props) {
                       onClick={() => navigate("industry-detail", selected.id)}
                       className="btn-primary w-full sm:w-auto justify-center text-xs sm:text-sm"
                     >
-                      Open Full {selected.name} Page <ArrowRightIcon size={16} />
+                      Open Full Industry Page <ArrowRightIcon size={16} />
                     </button>
                     <button
                       onClick={() => navigate("contact")}
@@ -252,7 +252,7 @@ export default function IndustriesPage({ navigate }: Props) {
                   style={{ borderColor: "var(--card-border)" }}
                 >
                   <div
-                    className="mb-2 sm:mb-3 p-2 sm:p-3 rounded-xl transition-transform group-hover:scale-110"
+                    className="mb-2 sm:mb-3 p-2 sm:p-3 rounded-xl transition-transform group-hover:scale-110 shrink-0"
                     style={{
                       background: `color-mix(in srgb, ${ind.color} 12%, transparent)`,
                       border: `1px solid color-mix(in srgb, ${ind.color} 25%, transparent)`,
@@ -260,7 +260,7 @@ export default function IndustriesPage({ navigate }: Props) {
                   >
                     <IconComp size={18} color={ind.color} />
                   </div>
-                  <div className="text-[0.75rem] sm:text-xs font-bold text-[var(--text-main)] mb-1 leading-tight line-clamp-2">
+                  <div className="text-[0.75rem] sm:text-xs font-bold text-[var(--text-main)] mb-1 leading-snug break-words">
                     {ind.name}
                   </div>
                   <div className="text-[0.62rem] font-mono-tech font-semibold mt-auto pt-1.5" style={{ color: ind.color }}>
