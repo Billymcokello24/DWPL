@@ -190,28 +190,35 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
           </div>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors cursor-pointer"
-              style={{ background: "var(--border-subtle)", color: "var(--text-main)" }}
+              className="w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer border"
+              style={{ background: "var(--surface)", borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
               aria-label="Toggle theme"
               title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              {theme === "dark" ? <SunIcon size={18} color="var(--accent)" /> : <MoonIcon size={18} color="var(--accent)" />}
+              {theme === "dark" ? <SunIcon size={17} color="var(--accent)" /> : <MoonIcon size={17} color="var(--accent)" />}
             </button>
 
-            <button onClick={() => go("support")} className="hidden md:flex btn-ghost text-xs py-1.5">
+            {/* Desktop-only action buttons */}
+            <button onClick={() => go("support")} className="hidden lg:flex btn-ghost text-xs py-1.5">
               Support
             </button>
-            <button onClick={() => go("contact")} className="btn-primary text-xs py-2 px-4 hidden md:flex">
+            <button onClick={() => go("contact")} className="btn-primary text-xs py-2 px-4 hidden lg:flex">
               Get Consultation
             </button>
+
+            {/* Mobile Hamburger Menu Toggle Button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl transition-colors cursor-pointer shrink-0 border"
-              style={{ background: "var(--surface)", borderColor: "var(--border-subtle)", color: "var(--text-main)" }}
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl transition-all cursor-pointer shrink-0 border shadow-xs"
+              style={{
+                background: mobileOpen ? "rgba(56,189,248,0.15)" : "var(--surface)",
+                borderColor: mobileOpen ? "var(--accent)" : "var(--border-subtle)",
+                color: mobileOpen ? "var(--accent)" : "var(--text-main)"
+              }}
               aria-label="Toggle Navigation Menu"
             >
               {mobileOpen ? (
@@ -232,7 +239,7 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
       >
         {/* Dark Backdrop Overlay */}
         <div
-          className={`fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 mobile-drawer-overlay ${
+          className={`fixed inset-0 bg-slate-950/75 backdrop-blur-md transition-opacity duration-300 mobile-drawer-overlay ${
             mobileOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={() => setMobileOpen(false)}
@@ -240,7 +247,7 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
 
         {/* Sliding Drawer Container */}
         <div
-          className={`relative w-[80vw] max-w-[320px] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 transform transition-transform duration-300 ease-out mobile-drawer-content ${
+          className={`relative w-[85vw] max-w-[320px] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 transform transition-transform duration-300 ease-out mobile-drawer-content ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           style={{
@@ -253,7 +260,10 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
             <div className="p-4 border-b flex items-center justify-between sticky top-0 bg-[var(--surface)] z-10" style={{ borderColor: "var(--border-subtle)" }}>
               <div className="flex items-center gap-2.5">
                 <img src="/logos/dwl-logo.png" alt="DWPL Logo" className="h-7 w-auto object-contain" />
-                <span className="font-display font-bold text-sm tracking-tight" style={{ color: "var(--text-main)" }}>DWPL Menu</span>
+                <div>
+                  <span className="font-display font-bold text-xs block leading-none" style={{ color: "var(--text-main)" }}>Digital World Prodigy</span>
+                  <span className="font-mono-tech block mt-0.5" style={{ color: "var(--accent)", fontSize: "0.5rem" }}>NAVIGATION MENU</span>
+                </div>
               </div>
 
               <button
@@ -294,7 +304,7 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
                     background: (currentPage === "solutions" || currentPage === "solution-detail") ? "rgba(56,189,248,0.08)" : "transparent",
                   }}
                 >
-                  <span>Solutions Catalogue</span>
+                  <span>Solutions Catalogue (18)</span>
                   <svg
                     width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor"
                     strokeWidth="2" strokeLinecap="round"
@@ -327,10 +337,23 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
                   </div>
                 )}
               </div>
+
+              {/* Support Link inside navigation list */}
+              <button
+                onClick={() => go("support")}
+                className="w-full text-left px-4 py-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-between cursor-pointer min-h-[44px]"
+                style={{
+                  color: currentPage === "support" ? "var(--accent)" : "var(--text-muted)",
+                  background: currentPage === "support" ? "rgba(56,189,248,0.12)" : "transparent",
+                }}
+              >
+                <span>Support Center</span>
+                {currentPage === "support" && <span className="w-2 h-2 rounded-full" style={{ background: "var(--accent)" }} />}
+              </button>
             </div>
           </div>
 
-          {/* Drawer Footer Actions */}
+          {/* Drawer Footer Actions — Get Consultation Button Prominently Placed Here */}
           <div className="p-4 border-t space-y-2.5 sticky bottom-0 bg-[var(--surface)]" style={{ borderColor: "var(--border-subtle)" }}>
             <button
               onClick={toggleTheme}
@@ -343,12 +366,8 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
               </span>
             </button>
 
-            <button onClick={() => go("contact")} className="btn-primary w-full justify-center text-xs py-3 min-h-[44px]">
+            <button onClick={() => go("contact")} className="btn-primary w-full justify-center text-xs py-3 min-h-[44px] shadow-lg">
               Get Consultation <ArrowRightIcon size={15} />
-            </button>
-
-            <button onClick={() => go("support")} className="btn-outline w-full justify-center text-xs py-2.5 min-h-[44px]">
-              Support Portal
             </button>
           </div>
         </div>
