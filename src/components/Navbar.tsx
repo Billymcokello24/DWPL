@@ -232,7 +232,7 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
       >
         {/* Dark Backdrop Overlay */}
         <div
-          className={`fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 mobile-drawer-overlay ${
             mobileOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={() => setMobileOpen(false)}
@@ -240,7 +240,7 @@ export default function Navbar({ currentPage, navigate, theme, toggleTheme }: Na
 
         {/* Sliding Drawer Container */}
         <div
-          className={`relative w-[80vw] max-w-[320px] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 transform transition-transform duration-300 ease-out ${
+          className={`relative w-[80vw] max-w-[320px] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 transform transition-transform duration-300 ease-out mobile-drawer-content ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           style={{
