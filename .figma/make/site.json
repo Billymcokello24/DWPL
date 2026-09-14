@@ -1,0 +1,10 @@
+{
+  "description": "This platform showcases comprehensive IT solutions for businesses, featuring a modern interface with detailed service descriptions, company information, and contact options.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

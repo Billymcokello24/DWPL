@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <rect width="300" height="100" rx="16" fill="#EEF2FF"/>
+  <circle cx="45" cy="50" r="32" fill="#4F46E5" fill-opacity="0.15" stroke="#4F46E5" stroke-width="3"/>
+  <path d="M28 58L31 42L39 50L45 36L51 50L59 42L62 58H28Z" fill="#6366F1" stroke="#3730A3" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="31" cy="38" r="2.5" fill="#4F46E5"/>
+  <circle cx="45" cy="32" r="2.5" fill="#4F46E5"/>
+  <circle cx="59" cy="38" r="2.5" fill="#4F46E5"/>
+  <text x="90" y="44" font-family="Outfit, sans-serif" font-weight="900" font-size="18" fill="#0F172A">SIAYA COUNTY</text>
+  <text x="90" y="68" font-family="Inter, sans-serif" font-weight="700" font-size="14" fill="#4F46E5" letter-spacing="2">CLUB & LODGING</text>
+</svg>
